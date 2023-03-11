@@ -4,18 +4,9 @@ import axios from 'axios'
 import MovieCard from '../components/MovieCard.vue'
 
 const movies = ref({})
-
-const props = defineProps({
-  page: String
-})
+const page = 1
 
 async function fetchData(page) {
-  if (isNaN(page) || page <= 0) {
-    //TODO: proper redirect
-    page = 1
-  } else {
-    page = parseInt(page)
-  }
 
   //TODO: const file
   const url = 'http://127.0.0.1:8000/movies/list?page=' + page
@@ -24,20 +15,29 @@ async function fetchData(page) {
   })
 }
 
-fetchData(props.page)
+fetchData(page)
 </script>
 
 <template>
+  <div>
+  <h1>Popular movies :</h1>
   <main>
     <MovieCard v-for="item in movies" :movie="item" />
   </main>
+  </div>
 </template>
 
 <style scoped>
+h1 {
+  font-size: 2.5em;
+  text-align: start;
+}
+
 main {
+  margin-top: 1em;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 </style>

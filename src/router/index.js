@@ -6,14 +6,10 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/movies/list/1'
+      redirect: '/movies/list'
     },
     {
       path: '/movies/list',
-      redirect: '/movies/list/1'
-    },
-    {
-      path: '/movies/list/:page',
       name: 'movies',
       component: HomeView,
       props: true

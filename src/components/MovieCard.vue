@@ -5,14 +5,12 @@ const props = defineProps({
 </script>
 
 <template>
-  <RouterLink to="/about">
-    <div class="card" :style="{ 'background-image': 'url(' + movie.backdrop + ')' }">
-      <div class="banner">
-        <div class="info">
-          {{ movie.title }}<span class="small"> ({{ movie.lang }})</span>
-        </div>
-        <div class="rating">{{ movie.rating }}<span class="small">/10</span></div>
+  <RouterLink to="/about" class="card" :style="{ 'background-image': 'url(' + movie.backdrop + ')' }">
+    <div class="banner">
+      <div class="info">
+        {{ movie.title }}<span class="small"> ({{ movie.lang }})</span>
       </div>
+      <div class="rating">{{ movie.rating }}<span class="small">/10</span></div>
     </div>
   </RouterLink>
 </template>
@@ -53,8 +51,14 @@ const props = defineProps({
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  margin: 1rem;
+  margin: 1em;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.card:hover{
+  margin: 0;
+  height: 9.7em;
+  width: 17.1em;
 }
 </style>
