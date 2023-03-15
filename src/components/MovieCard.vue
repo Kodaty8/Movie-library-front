@@ -2,10 +2,15 @@
 const props = defineProps({
   movie: Object
 })
+const url = "/movies/" + props.movie.id
 </script>
 
 <template>
-  <RouterLink to="/about" class="card" :style="{ 'background-image': 'url(' + movie.backdrop + ')' }">
+  <RouterLink
+    :to=url
+    class="card"
+    :style="{ 'background-image': 'url(' + movie.backdrop + ')' }"
+  >
     <div class="banner">
       <div class="info">
         {{ movie.title }}<span class="small"> ({{ movie.lang }})</span>
@@ -17,7 +22,7 @@ const props = defineProps({
 
 <style scoped>
 .small {
-  color: #aaa;
+  color: var(--vt-c-text-dark-2);
   font-size: 0.7em;
 }
 
@@ -39,7 +44,7 @@ const props = defineProps({
   background-color: #000a;
   min-height: 25%;
   width: 100%;
-  color: #fff;
+  color: var(--vt-c-text-dark-1);
   padding-top: 0.1em;
   padding-bottom: 0.1em;
 }
@@ -56,7 +61,7 @@ const props = defineProps({
   background-repeat: no-repeat;
 }
 
-.card:hover{
+.card:hover {
   margin: 0;
   height: 9.7em;
   width: 17.1em;
