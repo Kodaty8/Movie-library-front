@@ -30,11 +30,17 @@ fetchData(1)
   <div class="pagination">
     page
     <nav>
-      <span v-if="currentPage>2" class="link" @click="fetchData(1)">{{ 1 }}</span>
-      <span v-if="currentPage>1" class="link" @click="fetchData(currentPage-1)">{{ currentPage-1 }}</span>
+      <span v-if="currentPage > 2" class="link" @click="fetchData(1)">{{ 1 }}</span>
+      <span v-if="currentPage > 1" class="link" @click="fetchData(currentPage - 1)">{{
+        currentPage - 1
+      }}</span>
       <span>{{ currentPage }}</span>
-      <span v-if="currentPage<pageNb" class="link" @click="fetchData(currentPage+1)">{{ currentPage+1 }}</span>
-      <span v-if="currentPage<pageNb-1" class="link" @click="fetchData(pageNb)">{{ pageNb }}</span>
+      <span v-if="currentPage < pageNb" class="link" @click="fetchData(currentPage + 1)">{{
+        currentPage + 1
+      }}</span>
+      <span v-if="currentPage < pageNb - 1" class="link" @click="fetchData(pageNb)">{{
+        pageNb
+      }}</span>
     </nav>
   </div>
 </template>
@@ -44,7 +50,7 @@ span {
   margin: 0.2em;
 }
 
-.link{
+.link {
   text-decoration: underline;
   cursor: pointer;
   color: var(--green);
