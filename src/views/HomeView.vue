@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { inject, ref } from 'vue'
 import axios from 'axios'
 import MovieCard from '../components/MovieCard.vue'
 
@@ -8,8 +8,7 @@ const currentPage = ref(1)
 const pageNb = ref(1)
 
 async function fetchData(page) {
-  //TODO: const file
-  const url = 'http://127.0.0.1:8000/movies/list?page=' + page
+  const url = inject('backendUrl') + '/movies/list?page=' + page
   axios.get(url).then((response) => {
     movies.value = response.data.movies
     currentPage.value = response.data.page

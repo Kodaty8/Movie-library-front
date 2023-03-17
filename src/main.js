@@ -10,5 +10,6 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
+app.provide('backendUrl', 'http://localhost:8000')
 
 app.mount('#app')

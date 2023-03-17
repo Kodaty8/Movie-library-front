@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { inject, ref } from 'vue'
 import axios from 'axios'
 
 const props = defineProps({
@@ -9,8 +9,7 @@ const props = defineProps({
 const movie = ref({})
 
 async function fetchMovie() {
-  //TODO: const file
-  const url = 'http://127.0.0.1:8000/movies/' + props.id
+  const url = inject('backendUrl') + '/movies/' + props.id
   axios.get(url).then((response) => {
     movie.value = response.data
   })
