@@ -1,11 +1,20 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+import { useAccountStore } from '../stores/account'
+
+const store = useAccountStore()
+</script>
 
 <template>
   <nav class="nav-group">
     <RouterLink to="/"><h2>Movie Library</h2></RouterLink>
-    <div class="nav-group">
-      <RouterLink to="/about" class="btn">Sign in</RouterLink>
-      <RouterLink to="/about" class="btn">Register</RouterLink>
+    <div v-if="store.loggedIn" class="nav-group">
+      {{ store.user.username }}
+      <button class="btn" @click="store.logout">Log out</button>
+    </div>
+    <div v-else class="nav-group">
+      <RouterLink to="/users/login" class="btn">Log in</RouterLink>
+      <RouterLink to="/users/signup" class="btn">Sign up</RouterLink>
     </div>
   </nav>
 </template>
@@ -19,7 +28,6 @@ h2 {
 
 .nav-group {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }

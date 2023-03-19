@@ -7,10 +7,10 @@ const props = defineProps({
 })
 
 const movie = ref({})
+const baseUrl = inject('backendUrl') + '/movies/'
 
 async function fetchMovie() {
-  const url = inject('backendUrl') + '/movies/' + props.id
-  axios.get(url).then((response) => {
+  axios.get(baseUrl + props.id).then((response) => {
     movie.value = response.data
   })
 }

@@ -20,16 +20,19 @@ a,
 }
 
 .btn {
+  background-color: var(--color-background);
   border: 3px solid var(--green);
   border-radius: 8px;
-  padding: 7px;
-  margin: 7px;
+  padding: 0.5em;
+  margin: 0.5em;
   color: var(--color-heading);
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 @media (hover: hover) {
-  a:hover {
+  a:hover,
+  .btn:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }

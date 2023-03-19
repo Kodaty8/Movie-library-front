@@ -6,9 +6,10 @@ import MovieCard from '../components/MovieCard.vue'
 const movies = ref({})
 const currentPage = ref(1)
 const pageNb = ref(1)
+const baseUrl = inject('backendUrl') + '/movies/list?page='
 
 async function fetchData(page) {
-  const url = inject('backendUrl') + '/movies/list?page=' + page
+  const url = baseUrl + page
   axios.get(url).then((response) => {
     movies.value = response.data.movies
     currentPage.value = response.data.page
