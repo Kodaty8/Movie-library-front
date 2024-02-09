@@ -39,11 +39,11 @@ fetchMovie()
 </template>
 
 <style scoped>
-.line{
+.line {
   margin-bottom: 1em;
 }
 
-ul{
+ul {
   padding: 0;
   display: inline;
 }

@@ -3,12 +3,16 @@ const props = defineProps({
   movie: Object
 })
 function url() {
-  return "/movies/" + props.movie.id
+  return '/movies/' + props.movie.id
 }
 </script>
 
 <template>
-  <RouterLink :to="url()" class="card" :style="{ 'background-image': 'url(' + movie.backdrop + ')' }">
+  <RouterLink
+    :to="url()"
+    class="card"
+    :style="{ 'background-image': 'url(' + movie.backdrop + ')' }"
+  >
     <div class="banner">
       <div class="info">
         {{ movie.title }}<span class="small"> ({{ movie.lang }})</span>

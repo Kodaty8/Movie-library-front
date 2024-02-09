@@ -2,7 +2,7 @@
 import { inject, ref } from 'vue'
 import axios from 'axios'
 import { useAccountStore } from '../stores/account'
-import router from '../router';
+import router from '../router'
 
 const props = defineProps({
   action: String
@@ -10,18 +10,18 @@ const props = defineProps({
 
 const baseUrl = inject('backendUrl') + '/users/'
 
-var username = ""
-var password = ""
-var password2 = ""
-const errorMessage = ref("")
+var username = ''
+var password = ''
+var password2 = ''
+const errorMessage = ref('')
 
 async function submit() {
-  if (username.length < 1 || password.length < 1){
-    errorMessage.value = "username and password cannot be empty"
+  if (username.length < 1 || password.length < 1) {
+    errorMessage.value = 'username and password cannot be empty'
     return
   }
-  if (password != password2 && props.action == "signup"){
-    errorMessage.value = "Failed to confirm password"
+  if (password != password2 && props.action == 'signup') {
+    errorMessage.value = 'Failed to confirm password'
     return
   }
   const url = baseUrl + props.action
@@ -29,17 +29,20 @@ async function submit() {
   params.append('username', username)
   params.append('password', password)
 
-  axios.post(url, params).then((response) => {
-    const store = useAccountStore()
-    store.token = response.data.access_token
+  axios
+    .post(url, params)
+    .then((response) => {
+      const store = useAccountStore()
+      store.token = response.data.access_token
 
-    axios.get(baseUrl + 'me', store.headers).then((user) => {
-      store.setUser(user.data)
-      router.push("/")
+      axios.get(baseUrl + 'me', store.headers).then((user) => {
+        store.setUser(user.data)
+        router.push('/')
+      })
     })
-  }).catch((error) => {
-    errorMessage.value = error.response.statusText + ": " + error.response.data.detail
-  })
+    .catch((error) => {
+      errorMessage.value = error.response.statusText + ': ' + error.response.data.detail
+    })
 }
 </script>
 
@@ -55,7 +58,7 @@ async function submit() {
         <label for="password">Password: </label>
         <input type="password" id="password" v-model="password" />
       </div>
-      <div v-if="props.action=='signup'" class="field">
+      <div v-if="props.action == 'signup'" class="field">
         <label for="password2">Confirm assword: </label>
         <input type="password" id="password2" v-model="password2" />
       </div>
